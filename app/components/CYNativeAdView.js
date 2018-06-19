@@ -5,8 +5,19 @@ import {
     findNodeHandle,
     ViewPropTypes,
     StyleSheet,
+    Platform,
 } from 'react-native';
 import { string, func, arrayOf, number, oneOfType } from 'prop-types';
+
+const adViewKey = Platform.select({
+    ios: 'CYNativeAdView',
+    android: 'CYNativeAd',
+  });
+
+const reloadAdKey = Platform.select({
+    ios: UIManager.CYNativeAdView.Commands.reloadAd,
+    android: 1,
+  });
 
 class CYNativeAdView extends Component {
     constructor() {
@@ -25,7 +36,7 @@ class CYNativeAdView extends Component {
     requestNativeAd() {
         UIManager.dispatchViewManagerCommand(
             findNodeHandle(this.nativeAdViewRef),
-            1,
+            reloadAdKey,
             null
         );
     }
@@ -45,6 +56,7 @@ const styles = StyleSheet.create({
     natvieAdView: {
         height: 167,
         width: '100%',
+        
     }
 });
 
@@ -101,6 +113,6 @@ CYNativeAdView.propTypes = {
     onUnifiedNativeAdLoaded: func, 
 };
 
-const CYNativeAd = requireNativeComponent('CYNativeAd', CYNativeAdView)
+const CYNativeAd = requireNativeComponent(adViewKey, CYNativeAdView)
 
 export default CYNativeAdView;
