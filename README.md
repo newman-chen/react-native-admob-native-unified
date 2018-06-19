@@ -3,10 +3,16 @@
 
 Add example for adding unified native ad UI component for react-native usage
 
-# Run Android Project
+# Before you run (iOS)
+```shell
+pod install --repo-update
+```
+
+# Run Project
 ```shell
 npm install
-npm run android
+npm run android //android
+npm run iod     //ios
 ```
 
 # How to use
