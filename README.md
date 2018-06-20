@@ -33,14 +33,39 @@ npm run ios     //ios
 # Trouble shooting
 ### 1. No bundle URL present
 Make sure you're running a packager server or have included a .jsbundle file in your application bundle
-
 ### solution:
 - Open a terminal window
 - ```cd``` into ```$YOUR_PROJECT/ios```
 - Remove the build folder with ```rm -r build```
 - Run ```npm run ios``` again
 
+### 2. RCTBridge required dispatch_sync to load RCTDevLoadingView. This may lead to deadlocks
+### solution:
+- edit AppDelegate.m
+```Objective-C
+#if RCT_DEV
+#import <React/RCTDevLoadingView.h>
+#endif
+@implementation AppDelegate
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    NSURL *jsCodeLocation;
 
+    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+
+    RCTBridge *bridge = [[RCTBridge alloc] initWithBundleURL:jsCodeLocation
+                                            moduleProvider:nil
+                                             launchOptions:launchOptions];
+
+    #if RCT_DEV
+    [bridge moduleForClass:[RCTDevLoadingView class]];
+    #endif
+    RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
+                                                   moduleName:@"NativeModuleSample"
+                                            initialProperties:nil];
+}
+@end
+```
 
 # For more information
 1. [How to Create Native UI component for React-Native in Android](https://medium.com/p/ce198854ba22/)
