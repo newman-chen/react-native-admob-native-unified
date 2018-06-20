@@ -16,7 +16,7 @@ npm run ios     //ios
 ```
 
 # How to use
-參考以下範例或是參考 [App.js](https://github.com/newman-chen/react-native-unified-native-ad-sample/blob/master/App.js)
+參考以下範例或是參考 [App.js](https://github.com/newman-chen/react-native-admob-native-unified/blob/master/App.js)
 ```javascript
 <CYNativeAdView
     style={styles.nativeView} 
