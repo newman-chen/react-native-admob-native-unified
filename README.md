@@ -12,7 +12,7 @@ pod install --repo-update
 ```shell
 npm install
 npm run android //android
-npm run iod     //ios
+npm run ios     //ios
 ```
 
 # How to use
@@ -30,7 +30,20 @@ npm run iod     //ios
 />
 ```
 
+# Trouble shooting
+### 1. No bundle URL present
+Make sure you're running a packager server or have included a .jsbundle file in your application bundle
+
+### solution:
+- Open a terminal window
+- ```cd``` into ```$YOUR_PROJECT/ios```
+- Remove the build folder with ```rm -r build```
+- Run ```npm run ios``` again
+
+
+
 # For more information
-1. [How to Create Native UI component for React-Native](https://medium.com/@newmanchen/%E5%A6%82%E4%BD%95%E5%BB%BA%E7%AB%8B-android-native-ui-component-with-react-native-ce198854ba22)
-2. [Official Doc for Native Component](https://facebook.github.io/react-native/docs/native-components-android.html)
-3. [Native Ad Advanced](https://developers.google.com/admob/android/native-unified)
+1. [How to Create Native UI component for React-Native in Android](https://medium.com/p/ce198854ba22/)
+2. [How to Create Native UI component for React-Native in iOS](https://medium.com/p/ce198854ba22/)
+3. [Official Doc for Native Component](https://facebook.github.io/react-native/docs/native-components-android.html)
+4. [Native Ad Advanced](https://developers.google.com/admob/android/native-unified)
