@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 
 public class CYNativeAdViewManager extends ViewGroupManager<CYNativeAdView> {
     private static final String TAG = "CYNativeAdViewManager";
-    public static final String REACT_CLASS = "CYNativeAd";
+    public static final String REACT_CLASS = "CYNativeAdView";
 
     public static final String PROP_AD_UNIT_ID = "adUnitID";
     public static final String PROP_AD_COLORS = "adColors";
@@ -100,7 +100,6 @@ public class CYNativeAdViewManager extends ViewGroupManager<CYNativeAdView> {
     }
 
     /**
-     *
      * @param view
      * @param colors color[0] : ad's background color
      *               color[1] : ad's headline text color

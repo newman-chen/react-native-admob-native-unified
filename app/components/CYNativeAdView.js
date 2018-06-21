@@ -9,11 +9,6 @@ import {
 } from 'react-native';
 import { string, func, arrayOf, number, oneOfType } from 'prop-types';
 
-const adViewKey = Platform.select({
-    ios: 'CYNativeAdView',
-    android: 'CYNativeAd',
-  });
-
 const reloadAdKey = Platform.select({
     ios: UIManager.CYNativeAdView.Commands.reloadAd,
     android: 1,
@@ -113,6 +108,6 @@ CYNativeAdView.propTypes = {
     onUnifiedNativeAdLoaded: func, 
 };
 
-const CYNativeAd = requireNativeComponent(adViewKey, CYNativeAdView)
+const CYNativeAd = requireNativeComponent('CYNativeAdView', CYNativeAdView)
 
 export default CYNativeAdView;
