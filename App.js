@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import CYNativeAdView from './app/components/CYNativeAdView';
-import CYNativeImageView from './app/components/CYNativeImageView';
+import CYNativeAdManager from './app/manager/CYNativeAdManager';
+// import CYNativeImageView from './app/components/CYNativeImageView';
 //#endregion
 
 //#region variable
@@ -24,6 +25,7 @@ export default class App extends Component {
     this.state = {
       count: 0,
     }
+    let nativeAdManager = new CYNativeAdManager(this).initAdUnitId(unitID, 3)
   }
 
   componentDidMount() {

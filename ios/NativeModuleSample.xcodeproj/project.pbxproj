@@ -40,7 +40,8 @@
 		4A5E8DB920D89BBE0088DC6D /* CYNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5E8DB820D89BBE0088DC6D /* CYNativeAdView.xib */; };
 		4A5E8DC820D89C450088DC6D /* CYExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5E8DC620D89C450088DC6D /* CYExtension.swift */; };
 		4A5E8DC920D89C450088DC6D /* CYUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5E8DC720D89C450088DC6D /* CYUtil.swift */; };
-		4A5E8DFD20D89D5A0088DC6D /* CYNativeAdViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5E8DD620D89D5A0088DC6D /* CYNativeAdViewManager.m */; };
+		4A91755020DB4B2C00B57078 /* CYNativeAdModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A91754F20DB4B2C00B57078 /* CYNativeAdModule.m */; };
+		4ACA5AD220DA5E830015B55A /* CYUnifiedAdViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA5AD120DA5E830015B55A /* CYUnifiedAdViewManager.swift */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		77E74199BBF7DC8263FE81FE /* libPods-NativeModuleSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B928DAF7CB403A4ECAEE392E /* libPods-NativeModuleSample.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -355,8 +356,9 @@
 		4A5E8DB820D89BBE0088DC6D /* CYNativeAdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CYNativeAdView.xib; sourceTree = "<group>"; };
 		4A5E8DC620D89C450088DC6D /* CYExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYExtension.swift; sourceTree = "<group>"; };
 		4A5E8DC720D89C450088DC6D /* CYUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYUtil.swift; sourceTree = "<group>"; };
-		4A5E8DD620D89D5A0088DC6D /* CYNativeAdViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYNativeAdViewManager.m; sourceTree = "<group>"; };
-		4A5E8DFC20D89D5A0088DC6D /* CYNativeAdViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYNativeAdViewManager.h; sourceTree = "<group>"; };
+		4A91754E20DB4B2C00B57078 /* CYNativeAdModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYNativeAdModule.h; sourceTree = "<group>"; };
+		4A91754F20DB4B2C00B57078 /* CYNativeAdModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYNativeAdModule.m; sourceTree = "<group>"; };
+		4ACA5AD120DA5E830015B55A /* CYUnifiedAdViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYUnifiedAdViewManager.swift; sourceTree = "<group>"; };
 		4E965930ECF237C4AE6275ED /* Pods-NativeModuleSample-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativeModuleSample-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NativeModuleSample-tvOSTests/Pods-NativeModuleSample-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		680B1A08E87F541D2F2CA8BE /* Pods-NativeModuleSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativeModuleSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-NativeModuleSample/Pods-NativeModuleSample.release.xcconfig"; sourceTree = "<group>"; };
@@ -514,11 +516,12 @@
 		13B07FAE1A68108700A75B9A /* NativeModuleSample */ = {
 			isa = PBXGroup;
 			children = (
-				4A5E8DB520D89B160088DC6D /* NativeModuleSample-Bridging-Header.h */,
+				4ACA5ACE20DA5DE50015B55A /* Module */,
 				4A5E8DB420D89A8D0088DC6D /* ViewManager */,
 				4A5E8DB320D89A7C0088DC6D /* Util */,
 				4A5E8DB220D89A5D0088DC6D /* View */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				4A5E8DB520D89B160088DC6D /* NativeModuleSample-Bridging-Header.h */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -587,11 +590,20 @@
 		4A5E8DB420D89A8D0088DC6D /* ViewManager */ = {
 			isa = PBXGroup;
 			children = (
-				4A5E8DFC20D89D5A0088DC6D /* CYNativeAdViewManager.h */,
-				4A5E8DD620D89D5A0088DC6D /* CYNativeAdViewManager.m */,
+				4ACA5AD120DA5E830015B55A /* CYUnifiedAdViewManager.swift */,
 			);
 			name = ViewManager;
 			path = NativeModuleSample/ViewManager;
+			sourceTree = "<group>";
+		};
+		4ACA5ACE20DA5DE50015B55A /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				4A91754E20DB4B2C00B57078 /* CYNativeAdModule.h */,
+				4A91754F20DB4B2C00B57078 /* CYNativeAdModule.m */,
+			);
+			name = Module;
+			path = NativeModuleSample/Module;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -1280,12 +1292,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A5E8DFD20D89D5A0088DC6D /* CYNativeAdViewManager.m in Sources */,
 				4A5E8DC920D89C450088DC6D /* CYUtil.swift in Sources */,
+				4ACA5AD220DA5E830015B55A /* CYUnifiedAdViewManager.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				4A5E8DC820D89C450088DC6D /* CYExtension.swift in Sources */,
 				4A5E8DB720D89B170088DC6D /* CYNativeAdView.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				4A91755020DB4B2C00B57078 /* CYNativeAdModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

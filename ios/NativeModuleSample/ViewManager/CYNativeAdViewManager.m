@@ -14,6 +14,7 @@
 
 - (UIView *)view
 {
+  RCTLog(@"sambow333 view");
   CYNativeAdView* nativeAdView = [[CYNativeAdView alloc] init];
   //MARK: Event
   [nativeAdView setOnAdFailedToLoadClosure:^(CYNativeAdView* view) {
@@ -64,6 +65,7 @@
 //MARK: Method
 -(void) reloadAd:(nonnull NSNumber*) node
 {
+  RCTLog(@"sambow333 reloadAd");
   dispatch_queue_t mainQueue = dispatch_get_main_queue();
   dispatch_async(mainQueue, ^(){
     UIView* temp = [self.bridge.uiManager viewForReactTag:node];

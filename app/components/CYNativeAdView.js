@@ -10,7 +10,7 @@ import {
 import { string, func, arrayOf, number, oneOfType } from 'prop-types';
 
 const reloadAdKey = Platform.select({
-    ios: UIManager.CYNativeAdView.Commands.reloadAd,
+    ios: UIManager.CYUnifiedAdView.Commands.reloadAd,
     android: 1,
   });
 
@@ -108,6 +108,6 @@ CYNativeAdView.propTypes = {
     onUnifiedNativeAdLoaded: func, 
 };
 
-const CYNativeAd = requireNativeComponent('CYNativeAdView', CYNativeAdView)
+const CYNativeAd = requireNativeComponent('CYUnifiedAdView', CYNativeAdView)
 
 export default CYNativeAdView;
