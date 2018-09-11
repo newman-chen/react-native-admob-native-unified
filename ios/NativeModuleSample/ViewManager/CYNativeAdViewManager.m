@@ -8,7 +8,11 @@
 
 #import "CYNativeAdViewManager.h"
 #import <React/RCTUIManager.h>
+#if (PROD == 1)
 #import "NativeModuleSample-Swift.h"
+#else
+#import "NativeModuleSampleDev-Swift.h"
+#endif
 
 @implementation CYNativeAdViewManager
 

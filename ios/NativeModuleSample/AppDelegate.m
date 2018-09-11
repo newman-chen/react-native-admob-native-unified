@@ -9,7 +9,11 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#if (PROD == 1)
 #import "NativeModuleSample-Swift.h"
+#else
+#import "NativeModuleSampleDev-Swift.h"
+#endif
 
 #if RCT_DEV
 #import <React/RCTDevLoadingView.h>
@@ -28,8 +32,14 @@
   
   NSURL *jsCodeLocation;
   
-  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
-  
+  if (PROD == 1)
+  {
+    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+  }
+  else
+  {
+    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"indexDev" fallbackResource:nil];
+  }
   RCTBridge *bridge = [[RCTBridge alloc] initWithBundleURL:jsCodeLocation
                                             moduleProvider:nil
                                              launchOptions:launchOptions];
