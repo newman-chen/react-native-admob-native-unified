@@ -1,3 +1,7 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
-AppRegistry.registerComponent('NativeModuleSample', () => App);
+import {
+    NativeModules,
+  } from 'react-native';
+  
+  import CYNativeAdView from './app/components/CYNativeAdView';
+  
+  module.exports = { CYNativeAdView };

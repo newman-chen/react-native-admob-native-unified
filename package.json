@@ -9,7 +9,7 @@
   "contributors": [
     "Newman"
   ],
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
     "babel-preset-react-native-stage-0": "^1.0.1",
     "jest": "^23.0.1",
