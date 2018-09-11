@@ -1,7 +1,10 @@
 {
-  "name": "NativeModuleSample",
+  "name": "react-native-anue-native-ad",
   "version": "0.1.0",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/react-native-admob-native-unified.git"
+  },
   "devDependencies": {
     "babel-preset-react-native-stage-0": "^1.0.1",
     "jest": "^23.0.1",
