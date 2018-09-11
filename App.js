@@ -16,6 +16,7 @@ import CYNativeImageView from './app/components/CYNativeImageView';
 // const unitID = "ca-app-pub-3940256099942544/2521693316" // ios video
 // const unitID = "ca-app-pub-3940256099942544/2247696110" // android image
 const unitID = "ca-app-pub-3940256099942544/1044960115" // android video
+const dfpUnitId = "/6499/example/native" //Custom Rendering
 //#endregion
 
 export default class App extends Component {
@@ -36,7 +37,7 @@ export default class App extends Component {
       <View style={styles.container}>
         <CYNativeAdView
           style={styles.nativeView}
-          adUnitID={unitID}
+          adUnitID={dfpUnitId}
           /*
             Native Advanced	      ca-app-pub-3940256099942544/2247696110
             Native Advanced Video	ca-app-pub-3940256099942544/1044960115
