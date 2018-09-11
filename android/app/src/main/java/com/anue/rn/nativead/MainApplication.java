@@ -1,20 +1,20 @@
-package com.nativemodulesample;
+package com.anue.rn.nativead;
 
 import android.app.Application;
 
+import com.anue.rn.nativead.module.CYNativeReactPackage;
+import com.anue.rn.nativead.module.Constant;
+import com.anue.rn.nativead.module.RNImageViewReactPackage;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.google.android.gms.ads.MobileAds;
-import com.nativemodulesample.module.CYNativeReactPackage;
-import com.nativemodulesample.module.RNImageViewReactPackage;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static com.nativemodulesample.module.Constant.ADMOB_APP_ID;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -35,7 +35,7 @@ public class MainApplication extends Application implements ReactApplication {
 
         @Override
         protected String getJSMainModuleName() {
-            return "index";
+            return BuildConfig.ENTRY_FILE_NAME.replace(".js", "");
         }
     };
 
@@ -48,6 +48,6 @@ public class MainApplication extends Application implements ReactApplication {
     public void onCreate() {
         super.onCreate();
         SoLoader.init(this, /* native exopackage */ false);
-        MobileAds.initialize(this, ADMOB_APP_ID);
+        MobileAds.initialize(this, Constant.ADMOB_APP_ID);
     }
 }

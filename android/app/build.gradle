@@ -72,8 +72,9 @@ import com.android.build.OutputFile
  * ]
  */
 
+def entryFileName = '"index.js"'
 project.ext.react = [
-    entryFile: "index.js"
+    entryFile: entryFileName
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -98,7 +99,7 @@ android {
     buildToolsVersion "26.0.1"
 
     defaultConfig {
-        applicationId "com.nativemodulesample"
+        applicationId "com.anue.rn.nativead"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
@@ -121,6 +122,28 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+
+    flavorDimensions "mode"
+
+    productFlavors {
+        beta {
+            entryFileName = '"indexDev.js"'
+            dimension "mode"
+            buildConfigField "String", "ENTRY_FILE_NAME", entryFileName
+            project.ext.react = [
+                    entryFile: entryFileName
+            ]
+        }
+        real {
+            entryFileName = '"index.js"'
+            dimension "mode"
+            buildConfigField "String", "ENTRY_FILE_NAME", entryFileName
+            project.ext.react = [
+                    entryFile: entryFileName
+            ]
+        }
+    }
+
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->

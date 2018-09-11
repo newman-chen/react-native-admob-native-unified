@@ -1,4 +1,4 @@
-package com.nativemodulesample;
+package com.anue.rn.nativead;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;

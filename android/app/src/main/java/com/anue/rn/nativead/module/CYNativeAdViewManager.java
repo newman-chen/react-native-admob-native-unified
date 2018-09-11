@@ -1,17 +1,17 @@
-package com.nativemodulesample.module;
+package com.anue.rn.nativead.module;
 
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.anue.rn.nativead.util.CYLog;
 import com.facebook.react.bridge.JSApplicationIllegalArgumentException;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.nativemodulesample.util.CYLog;
 
 import java.util.Map;
 

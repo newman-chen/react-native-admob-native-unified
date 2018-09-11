@@ -1,4 +1,4 @@
-package com.nativemodulesample.module;
+package com.anue.rn.nativead.module;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -13,6 +13,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anue.rn.nativead.R;
+import com.anue.rn.nativead.util.CYLog;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
@@ -24,10 +26,8 @@ import com.google.android.gms.ads.formats.MediaView;
 import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
-import com.nativemodulesample.R;
-import com.nativemodulesample.util.CYLog;
 
-import static com.nativemodulesample.module.Constant.ADMOB_AD_UNIT_ID;
+import static com.anue.rn.nativead.module.Constant.ADMOB_AD_UNIT_ID;
 
 public class CYNativeAdView extends LinearLayout {
     private static final String TAG = "CYNativeAdView";

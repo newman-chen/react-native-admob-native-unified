@@ -1,10 +1,11 @@
-package com.nativemodulesample.module;
+package com.anue.rn.nativead.module;
 
 import android.content.Context;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.nativemodulesample.R;
+import com.anue.rn.nativead.R;
+
 
 public class CustomImageView extends LinearLayout {
     public CustomImageView(Context context) {

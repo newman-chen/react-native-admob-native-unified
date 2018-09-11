@@ -1,4 +1,4 @@
-package com.nativemodulesample.module;
+package com.anue.rn.nativead.module;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CYNativeReactPackage implements ReactPackage {
+public class RNImageViewReactPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
@@ -19,7 +19,7 @@ public class CYNativeReactPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Arrays.<ViewManager>asList(
-                new CYNativeAdViewManager()
+                new RNViewManager()
         );
     }
 }

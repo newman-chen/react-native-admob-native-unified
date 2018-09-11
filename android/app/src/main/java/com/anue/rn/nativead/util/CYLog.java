@@ -1,8 +1,9 @@
-package com.nativemodulesample.util;
+package com.anue.rn.nativead.util;
 
 import android.util.Log;
 
-import com.nativemodulesample.BuildConfig;
+import com.anue.rn.nativead.BuildConfig;
+
 
 public class CYLog {
 

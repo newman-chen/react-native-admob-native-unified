@@ -11,6 +11,7 @@
   "scripts": {
     "start": "react-native start",
     "android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res ; react-native run-android",
+    "android-dev": "react-native bundle --platform android --dev false --entry-file indexDev.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res ; react-native run-android --variant betaDebug",
     "ios": "react-native run-ios",
     "test": "jest"
   },

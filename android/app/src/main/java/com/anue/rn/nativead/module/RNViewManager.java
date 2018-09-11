@@ -1,4 +1,4 @@
-package com.nativemodulesample.module;
+package com.anue.rn.nativead.module;
 
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;

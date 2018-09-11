@@ -1,4 +1,4 @@
-package com.nativemodulesample.module;
+package com.anue.rn.nativead.module;
 
 public class Constant {
     public static final String ADMOB_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110";
