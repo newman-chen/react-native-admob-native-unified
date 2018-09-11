@@ -5,6 +5,11 @@
     "type": "git",
     "url": "git+https://github.com/react-native-admob-native-unified.git"
   },
+  "author": "anue Mobile Team",
+  "contributors": [
+    "Newman"
+  ],
+  "license": "MIT",
   "devDependencies": {
     "babel-preset-react-native-stage-0": "^1.0.1",
     "jest": "^23.0.1",
