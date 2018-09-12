@@ -7,7 +7,7 @@ import {
     StyleSheet,
     Platform,
 } from 'react-native';
-import { string, func, arrayOf, number, oneOfType } from 'prop-types';
+import propTypes, { func, string } from 'prop-types';
 
 const reloadAdKey = Platform.select({
     ios: UIManager.CYNativeAdView.Commands.reloadAd,
@@ -49,7 +49,7 @@ class CYNativeAdView extends Component {
 
 const styles = StyleSheet.create({
     natvieAdView: {
-        height: 167,
+        height: 104,
         width: '100%',
         
     }
@@ -61,7 +61,7 @@ CYNativeAdView.propTypes = {
     /**
      * ad unit ID provided from admob
      */
-    adUnitID: string,
+    adUnitID: propTypes.string,
 
     /**
      * color[0] : ad's background color
@@ -71,7 +71,12 @@ CYNativeAdView.propTypes = {
      * color[4] : ad's button backgroud color
      * e.g. {['#00ffff','#ff00ff', '#660000', '#53cd12', '#66000000']}
      */
-    adColors: arrayOf(oneOfType([string])),
+    adColors: propTypes.arrayOf(propTypes.oneOfType([string])),
+
+    /*
+     * has image within this layout
+     */
+    adLayoutWithImage: propTypes.bool,
 
     /**
      * indicate that ad has failed to load

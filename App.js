@@ -17,6 +17,7 @@ import CYNativeImageView from './app/components/CYNativeImageView';
 // const unitID = "ca-app-pub-3940256099942544/2247696110" // android image
 const unitID = "ca-app-pub-3940256099942544/1044960115" // android video
 const dfpUnitId = "/6499/example/native" //Custom Rendering
+const cnyesUnitId7 = "/1018855/app_news_headline_native_7"
 //#endregion
 
 export default class App extends Component {
@@ -42,7 +43,8 @@ export default class App extends Component {
             Native Advanced	      ca-app-pub-3940256099942544/2247696110
             Native Advanced Video	ca-app-pub-3940256099942544/1044960115
             */
-          adColors={['#2200ff00', '#ff0000', '#660000', '#53cd12', '#11000000']}
+          // adColors={['#2200ff00', '#ff0000', '#660000', '#53cd12', '#11000000']}
+          adLayoutWithImage={true}
           onUnifiedNativeAdLoaded={this.onAdLoaded}
           onAdFailedToLoad={this.onAdFailedToLoad}
           onAdImpression={this.onAdImpression}
