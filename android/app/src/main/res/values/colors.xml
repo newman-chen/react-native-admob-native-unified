@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ad_background">#F6F6F6</color>
+    <color name="ad_headline_text_color">#262626</color>
+    <color name="ad_advertiser_color">#3D9AD9</color>
+</resources>

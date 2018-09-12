@@ -23,6 +23,7 @@ public class CYNativeAdViewManager extends ViewGroupManager<CYNativeAdView> {
 
     public static final String PROP_AD_UNIT_ID = "adUnitID";
     public static final String PROP_AD_COLORS = "adColors";
+    public static final String PROP_AD_LAYOUT_WITH_IMAGE = "adLayoutWithImage";
 
     public static final String EVENT_AD_FAILED_TO_LOAD = "onAdFailedToLoad";
     public static final String EVENT_AD_CLICKED = "onAdClicked";
@@ -91,6 +92,12 @@ public class CYNativeAdViewManager extends ViewGroupManager<CYNativeAdView> {
                 root.requestNativeAd();
                 break;
         }
+    }
+
+    @ReactProp(name = PROP_AD_LAYOUT_WITH_IMAGE)
+    public void setPropAdLayoutWithImage(final CYNativeAdView view, final boolean hasImage) {
+        CYLog.d(TAG, "setPropAdLayoutWithImage() with hasImage:", hasImage);
+        view.setHasImage(hasImage);
     }
 
     @ReactProp(name = PROP_AD_UNIT_ID)

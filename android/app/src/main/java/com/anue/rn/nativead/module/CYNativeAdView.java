@@ -51,7 +51,7 @@ public class CYNativeAdView extends LinearLayout {
         }
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View viewRoot = layoutInflater.inflate(R.layout.ad_unified, this, true);
+        View viewRoot = layoutInflater.inflate(R.layout.ad_unified_simple, this, true);
         unifiedNativeAdView = (UnifiedNativeAdView) viewRoot.findViewById(R.id.unified_ad_view);
         initViews();
     }
@@ -64,11 +64,7 @@ public class CYNativeAdView extends LinearLayout {
         unifiedNativeAdView.setIconView(unifiedNativeAdView.findViewById(R.id.ad_app_icon));
         unifiedNativeAdView.setHeadlineView(unifiedNativeAdView.findViewById(R.id.ad_headline));
         unifiedNativeAdView.setAdvertiserView(unifiedNativeAdView.findViewById(R.id.ad_advertiser));
-        unifiedNativeAdView.setStarRatingView(unifiedNativeAdView.findViewById(R.id.ad_stars));
-        unifiedNativeAdView.setBodyView(unifiedNativeAdView.findViewById(R.id.ad_body));
-        unifiedNativeAdView.setPriceView(unifiedNativeAdView.findViewById(R.id.ad_price));
-        unifiedNativeAdView.setStoreView(unifiedNativeAdView.findViewById(R.id.ad_store));
-        unifiedNativeAdView.setCallToActionView(unifiedNativeAdView.findViewById(R.id.ad_call_to_action));
+//        unifiedNativeAdView.setCallToActionView(unifiedNativeAdView.findViewById(R.id.ad_call_to_action));
     }
 
     // to realize the wrap content in view , need to trigger requestLayout and re-layout by yourself
@@ -205,32 +201,12 @@ public class CYNativeAdView extends LinearLayout {
 
         // Some assets are guaranteed to be in every UnifiedNativeAd.
         ((TextView) unifiedNativeAdView.getHeadlineView()).setText(nativeAd.getHeadline());
-        ((TextView) unifiedNativeAdView.getBodyView()).setText(nativeAd.getBody());
-        ((Button) unifiedNativeAdView.getCallToActionView()).setText(nativeAd.getCallToAction());
 
         if (nativeAd.getIcon() == null) {
             unifiedNativeAdView.getIconView().setVisibility(GONE);
         } else {
             ((ImageView) unifiedNativeAdView.getIconView()).setImageDrawable(nativeAd.getIcon().getDrawable());
             unifiedNativeAdView.getIconView().setVisibility(VISIBLE);
-        }
-        if (nativeAd.getPrice() == null) {
-            unifiedNativeAdView.getPriceView().setVisibility(INVISIBLE);
-        } else {
-            ((TextView) unifiedNativeAdView.getPriceView()).setText(nativeAd.getPrice());
-            unifiedNativeAdView.getPriceView().setVisibility(VISIBLE);
-        }
-        if (nativeAd.getStore() == null) {
-            unifiedNativeAdView.getStoreView().setVisibility(INVISIBLE);
-        } else {
-            ((TextView) unifiedNativeAdView.getStoreView()).setText(nativeAd.getStore());
-            unifiedNativeAdView.getStoreView().setVisibility(VISIBLE);
-        }
-        if (nativeAd.getStarRating() == null) {
-            unifiedNativeAdView.getStarRatingView().setVisibility(GONE);
-        } else {
-            ((RatingBar) unifiedNativeAdView.getStarRatingView()).setRating(nativeAd.getStarRating().floatValue());
-            unifiedNativeAdView.getStarRatingView().setVisibility(VISIBLE);
         }
         if (nativeAd.getAdvertiser() == null) {
             unifiedNativeAdView.getAdvertiserView().setVisibility(GONE);
@@ -251,31 +227,47 @@ public class CYNativeAdView extends LinearLayout {
                 event);
     }
 
+    public void setHasImage(boolean hasImage) {
+        if (unifiedNativeAdView != null) {
+            if (mediaContainer != null) {
+                mediaContainer.setVisibility(hasImage ? VISIBLE : INVISIBLE);
+            }
+        }
+    }
+
     public void setAdmobAdUnitId(@NonNull String admobAdUnitId) {
         this.admobAdUnitId = admobAdUnitId;
     }
 
     public void setHeadlineColor(@NonNull int color) {
         if (unifiedNativeAdView != null) {
-            ((TextView) unifiedNativeAdView.getHeadlineView()).setTextColor(color);
+            if (unifiedNativeAdView.getHeadlineView() != null) {
+                ((TextView) unifiedNativeAdView.getHeadlineView()).setTextColor(color);
+            }
         }
     }
 
     public void setBodyTextColor(@NonNull int color) {
         if (unifiedNativeAdView != null) {
-            ((TextView) unifiedNativeAdView.getBodyView()).setTextColor(color);
+            if (unifiedNativeAdView.getBodyView() != null) {
+                ((TextView) unifiedNativeAdView.getBodyView()).setTextColor(color);
+            }
         }
     }
 
     public void setButtonTextColor(@NonNull int color) {
         if (unifiedNativeAdView != null) {
-            ((Button) unifiedNativeAdView.getCallToActionView()).setTextColor(color);
+            if (unifiedNativeAdView.getCallToActionView() != null) {
+                ((Button) unifiedNativeAdView.getCallToActionView()).setTextColor(color);
+            }
         }
     }
 
     public void setButtonBackgroundColor(@NonNull int color) {
         if (unifiedNativeAdView != null) {
-            unifiedNativeAdView.getCallToActionView().setBackgroundColor(color);
+            if (unifiedNativeAdView.getCallToActionView() != null) {
+                unifiedNativeAdView.getCallToActionView().setBackgroundColor(color);
+            }
         }
     }
 
