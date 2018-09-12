@@ -43,3 +43,29 @@ extension UIColor {
     self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
   }
 }
+extension UILabel {
+  
+  func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0,alignment:NSTextAlignment = .left) {
+    //        let attrs: [NSAttributedStringKey : Any] = [.kern: value]//間距
+    //        let attrs: [NSAttributedStringKey : Any] = [.paragraphStyle: value] //行距
+    guard let labelText = self.text else { return }
+    
+    let paragraphStyle = NSMutableParagraphStyle()
+    paragraphStyle.lineSpacing = lineSpacing
+    paragraphStyle.lineHeightMultiple = lineHeightMultiple
+    paragraphStyle.alignment = alignment
+    
+    let attributedString:NSMutableAttributedString
+    if let labelattributedText = self.attributedText {
+      attributedString = NSMutableAttributedString(attributedString: labelattributedText)
+    } else {
+      attributedString = NSMutableAttributedString(string: labelText)
+    }
+    
+    // Line spacing attribute
+    attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+//    attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+    
+    self.attributedText = attributedString
+  }
+}

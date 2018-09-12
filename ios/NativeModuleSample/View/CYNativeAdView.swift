@@ -17,12 +17,12 @@ import GoogleMobileAds
   //MARK: Layout Property
   private let imageWidth: CGFloat = 88
   private let imageWidthScale: CGFloat = 1
-  private let imageMargin: CGFloat = 8
-  private let textMarginTop: CGFloat = 8
-  private let textMarginLeft: CGFloat = 18
-  private let textMarginRight: CGFloat = 10
-  private let textHeight: CGFloat = 55
-  private let advertiserMarginTop: CGFloat = 72
+  private let imageMargin: CGFloat = 12
+  private let textMarginTop: CGFloat = 12
+  private let textMarginLeft: CGFloat = 17
+  private let textMarginRight: CGFloat = 12
+  private let textHeight: CGFloat = 60
+  private let advertiserMarginTop: CGFloat = 80
   private let advertiserImageSize: CGFloat = 20
   private let advertiserImageMarginRight: CGFloat = 5
   
@@ -144,7 +144,10 @@ import GoogleMobileAds
     nativeAdView.callToActionView?.frame = CGRect.zero
     nativeAdView.bodyView?.frame = CGRect.zero
     
-    
+//    (nativeAdView.headlineView as? UILabel)?.text = "真好玩遭日遊戲場告侵權 智財法院判『三國志』非商標"
+//    nativeAdView.headlineView?.backgroundColor = UIColor.blue
+    (nativeAdView.headlineView as? UILabel)?.lineBreakMode = NSLineBreakMode.byWordWrapping
+    (nativeAdView.headlineView as? UILabel)?.setLineSpacing(lineSpacing: 1.5)
     (nativeAdView.headlineView as? UILabel)?.numberOfLines = 0
     (nativeAdView.headlineView as? UILabel)?.sizeToFit()
     nativeAdView.headlineView?.frame = CGRect(x: headlineFrame.minX, y: headlineFrame.minY, width: headlineFrame.width, height: nativeAdView.headlineView?.frame.height ?? headlineFrame.height)

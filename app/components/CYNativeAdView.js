@@ -49,7 +49,7 @@ class CYNativeAdView extends Component {
 
 const styles = StyleSheet.create({
     natvieAdView: {
-        height: 104,
+        height: 112,
         width: '100%',
         
     }

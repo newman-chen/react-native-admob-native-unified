@@ -26,9 +26,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   
-  NSString* appId = @"ca-app-pub-3940256099942544~1458002511"; // ios
-  //    NSString* appId = @"ca-app-pub-3940256099942544~3347511713"; // android
-  [GADMobileAds configureWithApplicationID:appId];
+//  NSString* appId = @"ca-app-pub-3940256099942544~1458002511"; // ios
+// //     NSString* appId = @"ca-app-pub-3940256099942544~3347511713"; // android
+//  [GADMobileAds configureWithApplicationID:appId];
   
   NSURL *jsCodeLocation;
   
