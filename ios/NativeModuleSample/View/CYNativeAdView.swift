@@ -12,14 +12,29 @@ import GoogleMobileAds
 @objc class CYNativeAdView: UIView, GADUnifiedNativeAdLoaderDelegate, GADUnifiedNativeAdDelegate, GADVideoControllerDelegate {
   
   private var nativeAdView: GADUnifiedNativeAdView!
-  private let margin: CGFloat = 10
-  private let imageWidthScale: CGFloat = 4 / 9
-  private let imageScale: CGFloat = 3 / 4
   private var adLoader: GADAdLoader!
+  
+  //MARK: Layout Property
+  private let imageWidth: CGFloat = 88
+  private let imageWidthScale: CGFloat = 1
+  private let imageMargin: CGFloat = 8
+  private let textMarginTop: CGFloat = 8
+  private let textMarginLeft: CGFloat = 18
+  private let textMarginRight: CGFloat = 10
+  private let textHeight: CGFloat = 55
+  private let advertiserMarginTop: CGFloat = 72
+  private let advertiserImageSize: CGFloat = 20
+  private let advertiserImageMarginRight: CGFloat = 5
+  
+  //MARK: Default Layout Property
+  private let defaultLayoutMargin: CGFloat = 10
+  private let defaultLayoutImageWidthScale: CGFloat = 4 / 9
+  private let defaultLayoutImageScale: CGFloat = 3 / 4
   
   //MARK: Property
   var adUnitID: String?
   var adColors: Array<String>?
+  var adLayoutWithImage: Bool = true
   
   //MARK: Closure
   var onAdFailedToLoadClosure: ((_ view: CYNativeAdView) -> Void)?
@@ -51,6 +66,7 @@ import GoogleMobileAds
     CYUtil.LOG(changedProps)
     CYUtil.LOG(adUnitID ?? "nil")
     CYUtil.LOG(adColors ?? "nil")
+    CYUtil.LOG(adLayoutWithImage)
     if (changedProps.contains("adUnitID"))
     {
       reloadAd()
@@ -84,62 +100,55 @@ import GoogleMobileAds
         }
       }
     }
+    if (changedProps.contains("adLayoutWithImage"))
+    {
+//      layoutSubviews()
+    }
   }
   
   override func layoutSubviews() {
     let selfFrame = self.frame
-    let doubleMargin = margin * 2
+    let doubleMargin = imageMargin * 2
     
-    let adViewFrame = CGRect(x:0, y:0, width:selfFrame.size.width, height:selfFrame.size.height)
+    let imageSize = CGSize(width: imageWidth, height: imageWidth * imageWidthScale)
+    let adViewFrame = CGRect(x:0, y:0, width:selfFrame.size.width, height:imageSize.height + doubleMargin)
     CYUtil.LOG(adViewFrame)
-    let iconSize = adViewFrame.size.width * 1 / 10
-    let iconFrame = CGRect(x:margin, y:margin, width:iconSize, height:iconSize )
     
-    let maxImageWidth = adViewFrame.size.width * imageWidthScale
-    let imageSize = CGSize(width: maxImageWidth, height: maxImageWidth * imageScale)
-    let imageFrame = CGRect(x: adViewFrame.width - margin - imageSize.width, y: (adViewFrame.size.height - imageSize.height) / 2, width: imageSize.width, height: imageSize.height)
+    var headlineFrame: CGRect
+    var imageFrame: CGRect
+    
+    if adLayoutWithImage
+    {
+      imageFrame = CGRect(x: adViewFrame.width - imageMargin - imageSize.width, y: imageMargin, width: imageSize.width, height: imageSize.height)
+      headlineFrame = CGRect(x: textMarginLeft, y: textMarginTop, width: imageFrame.minX - textMarginRight - textMarginLeft, height: textHeight)
+    }
+    else
+    {
+      imageFrame = CGRect.zero
+      headlineFrame = CGRect(x: textMarginLeft, y: textMarginTop, width: adViewFrame.width - textMarginLeft - textMarginLeft, height: textHeight)
+    }
+    CYUtil.LOG("sambow image", imageFrame)
+    let iconFrame = CGRect(x: textMarginLeft, y: advertiserMarginTop, width: advertiserImageSize, height: advertiserImageSize)
+    let advertiserFrame = CGRect(x: iconFrame.maxX + advertiserImageMarginRight, y: iconFrame.minY, width: headlineFrame.maxX, height: iconFrame.size.height)
     
     nativeAdView.frame = adViewFrame
+    nativeAdView.headlineView?.frame = headlineFrame
     nativeAdView.iconView?.frame = iconFrame
+    nativeAdView.advertiserView?.frame = advertiserFrame
     nativeAdView.imageView?.frame = imageFrame
-    nativeAdView.mediaView?.frame = imageFrame
     
-    nativeAdView.headlineView?.sizeToFit()
-    nativeAdView.headlineView?.frame.origin = CGPoint(x:iconFrame.origin.x + iconSize + margin, y:margin)
-    let headlineFrame = (nativeAdView.headlineView?.frame)!
+    nativeAdView.mediaView?.frame = CGRect.zero
+    nativeAdView.starRatingView?.frame = CGRect.zero
+    nativeAdView.priceView?.frame = CGRect.zero
+    nativeAdView.storeView?.frame = CGRect.zero
+    nativeAdView.callToActionView?.frame = CGRect.zero
+    nativeAdView.bodyView?.frame = CGRect.zero
     
-    nativeAdView.advertiserView?.sizeToFit()
-    nativeAdView.advertiserView?.frame.origin = CGPoint(x:headlineFrame.origin.x, y:headlineFrame.origin.y + headlineFrame.size.height)
-    let advertiserFrame = (nativeAdView.advertiserView?.frame)!
     
-    let startView = (nativeAdView.starRatingView as? UIImageView)!
-    let startImage = startView.image
-    let startSize: CGSize!
-    if (startImage == nil){
-      startSize = CGSize.zero
-    }
-    else{
-      startSize = startImage?.size
-    }
-    let startFrame = CGRect(x: headlineFrame.origin.x, y: advertiserFrame.origin.y + advertiserFrame.size.height, width: startSize.width, height: startSize.height)
-    nativeAdView.starRatingView?.frame = startFrame
-    
-    nativeAdView.priceView?.sizeToFit()
-    let priceSize = (nativeAdView.priceView?.frame.size)!
-    nativeAdView.priceView?.frame.origin = CGPoint(x:margin, y:adViewFrame.size.height - margin - priceSize.height)
-    let priceFrame = (nativeAdView.priceView?.frame)!
-    
-    nativeAdView.storeView?.sizeToFit()
-    let storeSize = (nativeAdView.storeView?.frame.size)!
-    nativeAdView.storeView?.frame.origin = CGPoint(x:priceFrame.origin.x + priceSize.width + margin, y:adViewFrame.size.height - margin - storeSize.height)
-    let storeFrame = (nativeAdView.storeView?.frame)!
-    
-    nativeAdView.callToActionView?.sizeToFit()
-    let callToActionSize = (nativeAdView.callToActionView?.frame.size)!
-    nativeAdView.callToActionView?.frame.origin = CGPoint(x:storeFrame.origin.x + storeSize.width + margin, y:adViewFrame.size.height - margin - callToActionSize.height)
-    let callToActionFrame = (nativeAdView.callToActionView?.frame)!
-    
-    nativeAdView.bodyView?.frame = CGRect(x: margin, y: startFrame.origin.y + startFrame.size.height, width: imageFrame.origin.x - doubleMargin, height: callToActionFrame.origin.y - startFrame.origin.y - startFrame.size.height)
+    (nativeAdView.headlineView as? UILabel)?.numberOfLines = 0
+    (nativeAdView.headlineView as? UILabel)?.sizeToFit()
+    nativeAdView.headlineView?.frame = CGRect(x: headlineFrame.minX, y: headlineFrame.minY, width: headlineFrame.width, height: nativeAdView.headlineView?.frame.height ?? headlineFrame.height)
+//    defaultLayout()
   }
   
   //MARK: Public Function
@@ -175,7 +184,64 @@ import GoogleMobileAds
     }
     nativeAdView = tempView
     self.addSubview(nativeAdView)
+    self.backgroundColor = UIColor(hexString: "f6f6f6")
+  }
+  
+  private func defaultLayout()
+  {
+    let selfFrame = self.frame
+    let doubleMargin = defaultLayoutMargin * 2
     
+    let adViewFrame = CGRect(x:0, y:0, width:selfFrame.size.width, height:selfFrame.size.height)
+    CYUtil.LOG(adViewFrame)
+    let iconSize = adViewFrame.size.width * 1 / 10
+    let iconFrame = CGRect(x:defaultLayoutMargin, y:defaultLayoutMargin, width:iconSize, height:iconSize )
+    
+    let maxImageWidth = adViewFrame.size.width * defaultLayoutImageWidthScale
+    let imageSize = CGSize(width: maxImageWidth, height: maxImageWidth * defaultLayoutImageScale)
+    let imageFrame = CGRect(x: adViewFrame.width - defaultLayoutMargin - imageSize.width, y: (adViewFrame.size.height - imageSize.height) / 2, width: imageSize.width, height: imageSize.height)
+    
+    nativeAdView.frame = adViewFrame
+    nativeAdView.iconView?.frame = iconFrame
+    nativeAdView.imageView?.frame = imageFrame
+    nativeAdView.mediaView?.frame = imageFrame
+    
+    nativeAdView.headlineView?.sizeToFit()
+    nativeAdView.headlineView?.frame.origin = CGPoint(x:iconFrame.origin.x + iconSize + defaultLayoutMargin, y:defaultLayoutMargin)
+    let headlineFrame = (nativeAdView.headlineView?.frame)!
+    
+    nativeAdView.advertiserView?.sizeToFit()
+    nativeAdView.advertiserView?.frame.origin = CGPoint(x:headlineFrame.origin.x, y:headlineFrame.origin.y + headlineFrame.size.height)
+    let advertiserFrame = (nativeAdView.advertiserView?.frame)!
+    
+    let startView = (nativeAdView.starRatingView as? UIImageView)!
+    let startImage = startView.image
+    let startSize: CGSize!
+    if (startImage == nil){
+      startSize = CGSize.zero
+    }
+    else{
+      startSize = startImage?.size
+    }
+    let startFrame = CGRect(x: headlineFrame.origin.x, y: advertiserFrame.origin.y + advertiserFrame.size.height, width: startSize.width, height: startSize.height)
+    nativeAdView.starRatingView?.frame = startFrame
+    
+    nativeAdView.priceView?.sizeToFit()
+    let priceSize = (nativeAdView.priceView?.frame.size)!
+    nativeAdView.priceView?.frame.origin = CGPoint(x:defaultLayoutMargin, y:adViewFrame.size.height - defaultLayoutMargin - priceSize.height)
+    let priceFrame = (nativeAdView.priceView?.frame)!
+    
+    nativeAdView.storeView?.sizeToFit()
+    let storeSize = (nativeAdView.storeView?.frame.size)!
+    nativeAdView.storeView?.frame.origin = CGPoint(x:priceFrame.origin.x + priceSize.width + defaultLayoutMargin, y:adViewFrame.size.height - defaultLayoutMargin - storeSize.height)
+    let storeFrame = (nativeAdView.storeView?.frame)!
+    
+    nativeAdView.callToActionView?.sizeToFit()
+    let callToActionSize = (nativeAdView.callToActionView?.frame.size)!
+    nativeAdView.callToActionView?.frame.origin = CGPoint(x:storeFrame.origin.x + storeSize.width + defaultLayoutMargin, y:adViewFrame.size.height - defaultLayoutMargin - callToActionSize.height)
+    let callToActionFrame = (nativeAdView.callToActionView?.frame)!
+    
+    nativeAdView.bodyView?.frame = CGRect(x: defaultLayoutMargin, y: startFrame.origin.y + startFrame.size.height, width: imageFrame.origin.x - doubleMargin, height: callToActionFrame.origin.y - startFrame.origin.y - startFrame.size.height)
   }
   
   private func setAdView(nativeAd: GADUnifiedNativeAd){
@@ -221,6 +287,8 @@ import GoogleMobileAds
       nativeAdView.imageView?.isHidden = false
       let firstImage: GADNativeAdImage? = nativeAd.images?.first
       (nativeAdView.imageView as? UIImageView)?.image = firstImage?.image
+      (nativeAdView.imageView as? UIImageView)?.contentMode = .scaleAspectFill
+      (nativeAdView.imageView as? UIImageView)?.clipsToBounds = true
       //      videoStatusLabel.text = "Ad does not contain a video."
     }
     // These assets are not guaranteed to be present. Check that they are before

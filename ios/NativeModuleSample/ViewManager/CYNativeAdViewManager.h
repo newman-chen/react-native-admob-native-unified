@@ -14,6 +14,7 @@
 //MARK: Property
 RCT_EXPORT_VIEW_PROPERTY(adUnitID, NSString)
 RCT_EXPORT_VIEW_PROPERTY(adColors, NSArray<NSString>)
+RCT_EXPORT_VIEW_PROPERTY(adLayoutWithImage, BOOL)
 
 //MARK: Method
 RCT_EXTERN_METHOD(reloadAd:(nonnull NSNumber *)node)
