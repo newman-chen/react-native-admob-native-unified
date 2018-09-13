@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="104dp"
+        android:layout_height="112dp"
         android:layout_gravity="center"
         android:background="@color/ad_background"
         android:orientation="vertical">
@@ -14,8 +14,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="18dp"
-            android:paddingRight="8dp">
+            android:paddingLeft="17dp"
+            android:paddingRight="12dp">
 
             <LinearLayout
                 android:id="@+id/ad_media_container"
@@ -25,8 +25,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_centerVertical="true"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="12dp"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -54,10 +54,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="11dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="12dp"
                 android:layout_toLeftOf="@id/ad_media_container"
                 android:layout_toStartOf="@id/ad_media_container"
                 android:orientation="vertical">
