@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import CYNativeAdView from './app/components/CYNativeAdView';
+import CYTemplateAdView from './app/components/CYTemplateAdView';
 import CYNativeImageView from './app/components/CYNativeImageView';
 //#endregion
 
@@ -17,7 +18,8 @@ import CYNativeImageView from './app/components/CYNativeImageView';
 // const unitID = "ca-app-pub-3940256099942544/2247696110" // android image
 const unitID = "ca-app-pub-3940256099942544/1044960115" // android video
 const dfpUnitId = "/6499/example/native" //Custom Rendering
-const cnyesUnitId7 = "/1018855/app_news_headline_native_7"
+// const cnyesUnitId7 = "/1018855/app_news_headline_native_7"
+const cnyesUnitId7 = "/1018855/app_news_headline_native_7/app_news_headline_native_7_IOS"
 //#endregion
 
 export default class App extends Component {
@@ -36,9 +38,9 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <CYNativeAdView
+        <CYTemplateAdView
           style={styles.nativeView}
-          adUnitID={dfpUnitId}
+          adUnitID={cnyesUnitId7}
           /*
             Native Advanced	      ca-app-pub-3940256099942544/2247696110
             Native Advanced Video	ca-app-pub-3940256099942544/1044960115

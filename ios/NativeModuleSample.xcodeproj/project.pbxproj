@@ -36,6 +36,14 @@
 		2DCD954D1E0B4F2C00145EB5 /* NativeModuleSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* NativeModuleSampleTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		369A564BD5CD746C9CBD1D3E /* libPods-NativeModuleSampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4141D55193120F4D0804994 /* libPods-NativeModuleSampleTests.a */; };
+		4A21B99C2151EE640081DB2E /* CYTemplateAdViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A21B99B2151EE640081DB2E /* CYTemplateAdViewManager.m */; };
+		4A21B99D2151EE640081DB2E /* CYTemplateAdViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A21B99B2151EE640081DB2E /* CYTemplateAdViewManager.m */; };
+		4A21B9C52151F3520081DB2E /* CYTemplateAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A21B9C32151F3520081DB2E /* CYTemplateAdView.swift */; };
+		4A21B9C62151F3520081DB2E /* CYTemplateAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A21B9C32151F3520081DB2E /* CYTemplateAdView.swift */; };
+		4A21B9CA2151F3B50081DB2E /* CYTemplateAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A21B9C92151F3B50081DB2E /* CYTemplateAdView.xib */; };
+		4A21B9CB2151F3B50081DB2E /* CYTemplateAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A21B9C92151F3B50081DB2E /* CYTemplateAdView.xib */; };
+		4A21B9CD2152001A0081DB2E /* TemplateAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A21B9CC2152001A0081DB2E /* TemplateAdView.swift */; };
+		4A21B9CE2152001A0081DB2E /* TemplateAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A21B9CC2152001A0081DB2E /* TemplateAdView.swift */; };
 		4A5E8DB720D89B170088DC6D /* CYNativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5E8DB620D89B170088DC6D /* CYNativeAdView.swift */; };
 		4A5E8DB920D89BBE0088DC6D /* CYNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5E8DB820D89BBE0088DC6D /* CYNativeAdView.xib */; };
 		4A5E8DC820D89C450088DC6D /* CYExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5E8DC620D89C450088DC6D /* CYExtension.swift */; };
@@ -373,6 +381,11 @@
 		2D02E47B1E0B4A5D006451C7 /* NativeModuleSample-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NativeModuleSample-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* NativeModuleSample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NativeModuleSample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A21B99A2151EE640081DB2E /* CYTemplateAdViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYTemplateAdViewManager.h; sourceTree = "<group>"; };
+		4A21B99B2151EE640081DB2E /* CYTemplateAdViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYTemplateAdViewManager.m; sourceTree = "<group>"; };
+		4A21B9C32151F3520081DB2E /* CYTemplateAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYTemplateAdView.swift; sourceTree = "<group>"; };
+		4A21B9C92151F3B50081DB2E /* CYTemplateAdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CYTemplateAdView.xib; sourceTree = "<group>"; };
+		4A21B9CC2152001A0081DB2E /* TemplateAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateAdView.swift; sourceTree = "<group>"; };
 		4A5E8DB520D89B160088DC6D /* NativeModuleSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NativeModuleSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		4A5E8DB620D89B170088DC6D /* CYNativeAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYNativeAdView.swift; sourceTree = "<group>"; };
 		4A5E8DB820D89BBE0088DC6D /* CYNativeAdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CYNativeAdView.xib; sourceTree = "<group>"; };
@@ -620,6 +633,9 @@
 			children = (
 				4A5E8DB620D89B170088DC6D /* CYNativeAdView.swift */,
 				4A5E8DB820D89BBE0088DC6D /* CYNativeAdView.xib */,
+				4A21B9C32151F3520081DB2E /* CYTemplateAdView.swift */,
+				4A21B9C92151F3B50081DB2E /* CYTemplateAdView.xib */,
+				4A21B9CC2152001A0081DB2E /* TemplateAdView.swift */,
 			);
 			name = View;
 			path = NativeModuleSample/View;
@@ -640,6 +656,8 @@
 			children = (
 				4A5E8DFC20D89D5A0088DC6D /* CYNativeAdViewManager.h */,
 				4A5E8DD620D89D5A0088DC6D /* CYNativeAdViewManager.m */,
+				4A21B99A2151EE640081DB2E /* CYTemplateAdViewManager.h */,
+				4A21B99B2151EE640081DB2E /* CYTemplateAdViewManager.m */,
 			);
 			name = ViewManager;
 			path = NativeModuleSample/ViewManager;
@@ -1221,6 +1239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A5E8DB920D89BBE0088DC6D /* CYNativeAdView.xib in Resources */,
+				4A21B9CA2151F3B50081DB2E /* CYTemplateAdView.xib in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
@@ -1246,6 +1265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AD22AC52147748600532D4C /* CYNativeAdView.xib in Resources */,
+				4A21B9CB2151F3B50081DB2E /* CYTemplateAdView.xib in Resources */,
 				4AD22AC62147748600532D4C /* Images.xcassets in Resources */,
 				4AD22AC72147748600532D4C /* LaunchScreen.xib in Resources */,
 			);
@@ -1401,11 +1421,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A21B9CD2152001A0081DB2E /* TemplateAdView.swift in Sources */,
 				4A5E8DFD20D89D5A0088DC6D /* CYNativeAdViewManager.m in Sources */,
+				4A21B9C52151F3520081DB2E /* CYTemplateAdView.swift in Sources */,
 				4A5E8DC920D89C450088DC6D /* CYUtil.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				4A5E8DC820D89C450088DC6D /* CYExtension.swift in Sources */,
 				4A5E8DB720D89B170088DC6D /* CYNativeAdView.swift in Sources */,
+				4A21B99C2151EE640081DB2E /* CYTemplateAdViewManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1431,11 +1454,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A21B9CE2152001A0081DB2E /* TemplateAdView.swift in Sources */,
 				4AD22AB02147748600532D4C /* CYNativeAdViewManager.m in Sources */,
+				4A21B9C62151F3520081DB2E /* CYTemplateAdView.swift in Sources */,
 				4AD22AB12147748600532D4C /* CYUtil.swift in Sources */,
 				4AD22AB22147748600532D4C /* AppDelegate.m in Sources */,
 				4AD22AB32147748600532D4C /* CYExtension.swift in Sources */,
 				4AD22AB42147748600532D4C /* CYNativeAdView.swift in Sources */,
+				4A21B99D2151EE640081DB2E /* CYTemplateAdViewManager.m in Sources */,
 				4AD22AB52147748600532D4C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
