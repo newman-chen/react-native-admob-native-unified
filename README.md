@@ -11,8 +11,8 @@ pod install --repo-update
 # Run Project
 ```shell
 npm install
-npm run android //android
-npm run ios     //ios
+npm run android-dev //android
+npm run ios-dev     //ios
 ```
 
 # How to use
