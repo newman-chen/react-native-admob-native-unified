@@ -37,7 +37,7 @@ Make sure you're running a packager server or have included a .jsbundle file in 
 - Open a terminal window
 - ```cd``` into ```$YOUR_PROJECT/ios```
 - Remove the build folder with ```rm -r build```
-- Run ```npm run ios``` again
+- Run ```npm run ios-dev``` again
 
 ### 2. RCTBridge required dispatch_sync to load RCTDevLoadingView. This may lead to deadlocks
 ### solution:
