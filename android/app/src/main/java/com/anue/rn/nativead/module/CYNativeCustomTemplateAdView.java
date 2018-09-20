@@ -201,7 +201,7 @@ public class CYNativeCustomTemplateAdView extends LinearLayout {
 
     public void setHasImage(boolean hasImage) {
         if (mediaContainer != null) {
-            mediaContainer.setVisibility(hasImage ? VISIBLE : INVISIBLE);
+            mediaContainer.setVisibility(hasImage ? VISIBLE : GONE);
         }
     }
 

@@ -43,7 +43,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <View>
-          <Text>Custom Rendering Ad Unit Id : {dfpUnitId}</Text>
+          <Text style={{color: 'black'}}>Custom Rendering Ad Unit Id :</Text><Text>{dfpUnitId}</Text>
         </View>
         <CYNativeAdView
           style={styles.nativeView}
@@ -67,7 +67,7 @@ export default class App extends Component {
           </Text>
         </View>
         <View>
-          <Text>Custom Template Ad Unit Id : {CNYES_AD_UNIT_ID_7}</Text>
+          <Text style={{color: 'black'}}>Custom Template Ad Unit Id : </Text><Text>{CNYES_AD_UNIT_ID_7}</Text>
         </View>
         <CYTemplateAdView
           style={styles.nativeView}
