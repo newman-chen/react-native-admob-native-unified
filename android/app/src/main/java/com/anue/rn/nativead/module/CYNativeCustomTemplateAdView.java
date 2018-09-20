@@ -1,9 +1,10 @@
 package com.anue.rn.nativead.module;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -36,7 +37,12 @@ public class CYNativeCustomTemplateAdView extends LinearLayout {
     protected AppCompatTextView sponsorName;
 
     private String admobAdUnitId;
-    private String customTemplateId = "10157685";
+    private String customTemplateId = "11796669";
+
+    private static final String CUSTOM_VARIABLE_KEY_TEXT = "Title";
+    private static final String CUSTOM_VARIABLE_KEY_COVER = "Cover";
+    private static final String CUSTOM_VARIABLE_KEY_SPONSOR = "Sponsor";
+    private static final String CUSTOM_VARIABLE_KEY_URL = "URL";
 
     public CYNativeCustomTemplateAdView(Context context) {
         super(context);
@@ -101,14 +107,7 @@ public class CYNativeCustomTemplateAdView extends LinearLayout {
                 }
                 sendEvent(CYNativeAdViewManager.EVENT_UNIFIED_NATIVE_AD_LOADED, null);
             }
-        }, new NativeCustomTemplateAd.OnCustomClickListener() {
-            @Override
-            public void onCustomClick(NativeCustomTemplateAd nativeCustomTemplateAd, String s) {
-                if (nativeCustomTemplateAd != null) {
-                    nativeCustomTemplateAd.performClick(s);
-                }
-            }
-        });
+        }, null);
 
 //        boolean muted = false; // FIXME option
 //        VideoOptions videoOptions = new VideoOptions.Builder()
@@ -172,21 +171,35 @@ public class CYNativeCustomTemplateAdView extends LinearLayout {
         adLoader.loadAd(new AdRequest.Builder().build());
     }
 
-    private void populateNativeCustomTemplateAd(NativeCustomTemplateAd templateAd) {
-        CYLog.d(TAG, "templateAd::", templateAd.getText("Title"));
-        CYLog.d(TAG, "templateAd::", templateAd.getImage("Cover").getUri().toString());
-        CYLog.d(TAG, "templateAd::", templateAd.getText("Sponsor"));
+    private void populateNativeCustomTemplateAd(final NativeCustomTemplateAd templateAd) {
+        CYLog.d(TAG, "templateAd text::", templateAd.getText(CUSTOM_VARIABLE_KEY_TEXT));
+        CYLog.d(TAG, "templateAd cover::", templateAd.getImage(CUSTOM_VARIABLE_KEY_COVER).getUri().toString());
+        CYLog.d(TAG, "templateAd sponsor::", templateAd.getText(CUSTOM_VARIABLE_KEY_SPONSOR));
+        CYLog.d(TAG, "templateAd url::", templateAd.getText(CUSTOM_VARIABLE_KEY_URL));
 
-        headlineTextView.setText(templateAd.getText("Title")+"贊助");
-        if (templateAd.getImage("Cover") != null) {
-            imageView.setImageDrawable(templateAd.getImage("Cover").getDrawable());
+        headlineTextView.setText(templateAd.getText(CUSTOM_VARIABLE_KEY_TEXT));
+        if (templateAd.getImage(CUSTOM_VARIABLE_KEY_COVER) != null) {
+            imageView.setImageDrawable(templateAd.getImage(CUSTOM_VARIABLE_KEY_COVER).getDrawable());
             imageView.setVisibility(VISIBLE);
         } else {
             imageView.setVisibility(GONE);
         }
         mediaView.setVisibility(GONE);
-        sponsorName.setText(templateAd.getText("Sponsor"));
+        String displayString = templateAd.getText(CUSTOM_VARIABLE_KEY_SPONSOR) + "贊助";
+        sponsorName.setText(displayString);
 
+        final CharSequence url = templateAd.getText(CUSTOM_VARIABLE_KEY_URL);
+        if (!TextUtils.isEmpty(url)) {
+            setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CYLog.d(TAG, "click ", CUSTOM_VARIABLE_KEY_URL);
+                    templateAd.performClick(CUSTOM_VARIABLE_KEY_URL);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url.toString()));
+                    getContext().startActivity(intent);
+                }
+            });
+        }
         templateAd.recordImpression();
     }
 
