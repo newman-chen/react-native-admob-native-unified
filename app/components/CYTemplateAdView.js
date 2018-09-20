@@ -68,16 +68,6 @@ CYTemplateAdView.propTypes = {
      */
     // templateId: propTypes.string,
 
-    /**
-     * color[0] : ad's background color
-     * color[1] : ad's headline text color
-     * color[2] : ad's body text color
-     * color[3] : ad's button text color
-     * color[4] : ad's button backgroud color
-     * e.g. {['#00ffff','#ff00ff', '#660000', '#53cd12', '#66000000']}
-     */
-    // adColors: propTypes.arrayOf(propTypes.oneOfType([string])),
-
     /*
      * has image within this layout
      */

@@ -6,6 +6,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import CYNativeAdView from './app/components/CYNativeAdView';
 import CYTemplateAdView from './app/components/CYTemplateAdView';
@@ -18,8 +19,11 @@ import CYNativeImageView from './app/components/CYNativeImageView';
 // const unitID = "ca-app-pub-3940256099942544/2247696110" // android image
 const unitID = "ca-app-pub-3940256099942544/1044960115" // android video
 const dfpUnitId = "/6499/example/native" //Custom Rendering
-// const cnyesUnitId7 = "/1018855/app_news_headline_native_7"
-const cnyesUnitId7 = "/1018855/app_news_headline_native_7/app_news_headline_native_7_IOS"
+const CNYES_AD_UNIT_ID_7 = Platform.select({
+  ios: '/1018855/app_news_headline_native_7/app_news_headline_native_7_IOS',
+  android:
+    '/1018855/app_news_headline_native_7/app_news_headline_native_7_Android',
+});
 //#endregion
 
 export default class App extends Component {
@@ -38,14 +42,13 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <CYTemplateAdView
+        <View>
+          <Text>Custom Rendering Ad Unit Id : {dfpUnitId}</Text>
+        </View>
+        <CYNativeAdView
           style={styles.nativeView}
-          adUnitID={cnyesUnitId7}
-          /*
-            Native Advanced	      ca-app-pub-3940256099942544/2247696110
-            Native Advanced Video	ca-app-pub-3940256099942544/1044960115
-            */
-          // adColors={['#2200ff00', '#ff0000', '#660000', '#53cd12', '#11000000']}
+          adUnitID={dfpUnitId}
+          adColors={['#2200ff00', '#ff0000', '#660000', '#53cd12', '#11000000']}
           adLayoutWithImage={true}
           onUnifiedNativeAdLoaded={this.onAdLoaded}
           onAdFailedToLoad={this.onAdFailedToLoad}
@@ -63,6 +66,20 @@ export default class App extends Component {
             {this.state.count !== 0 ? this.state.count : null}
           </Text>
         </View>
+        <View>
+          <Text>Custom Template Ad Unit Id : {CNYES_AD_UNIT_ID_7}</Text>
+        </View>
+        <CYTemplateAdView
+          style={styles.nativeView}
+          adUnitID={CNYES_AD_UNIT_ID_7}
+          adLayoutWithImage={true}
+          onUnifiedNativeAdLoaded={this.onAdLoaded}
+          onAdFailedToLoad={this.onAdFailedToLoad}
+          onAdImpression={this.onAdImpression}
+          onAdClicked={this.onAdClicked}
+          onAdLeftApplication={this.onAdLeftApplication}
+          onRef={ref => (this.child = ref)}
+        />
       </View>
     );
   }

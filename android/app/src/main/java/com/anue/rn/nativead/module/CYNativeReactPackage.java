@@ -19,7 +19,8 @@ public class CYNativeReactPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Arrays.<ViewManager>asList(
-                new CYNativeAdViewManager()
+                new CYNativeAdViewManager(),
+                new CYNativeCustomTemplateAdViewManager()
         );
     }
 }
