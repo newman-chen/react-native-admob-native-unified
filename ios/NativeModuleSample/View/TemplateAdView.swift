@@ -13,4 +13,5 @@ class TemplateAdView: UIView {
   @IBOutlet weak var image: UIImageView!
   @IBOutlet weak var advertiserImage: UIImageView!
   @IBOutlet weak var advertiserTitle: UILabel!
+  @IBOutlet weak var advertiserIcon: UILabel!
 }
