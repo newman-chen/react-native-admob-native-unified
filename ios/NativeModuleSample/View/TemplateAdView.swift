@@ -9,10 +9,8 @@
 import UIKit
 
 class TemplateAdView: UIView {
-
   @IBOutlet weak var headline: UILabel!
   @IBOutlet weak var image: UIImageView!
   @IBOutlet weak var advertiserImage: UIImageView!
   @IBOutlet weak var advertiserTitle: UILabel!
-
 }

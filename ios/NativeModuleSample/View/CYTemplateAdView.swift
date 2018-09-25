@@ -13,6 +13,7 @@ class CYTemplateAdView: UIView, GADNativeCustomTemplateAdLoaderDelegate {
 
   private var templateAdView: TemplateAdView!
   private var adLoader: GADAdLoader!
+  private var templateAd: GADNativeCustomTemplateAd!
   
 //  private var 
   
@@ -32,7 +33,7 @@ class CYTemplateAdView: UIView, GADNativeCustomTemplateAdLoaderDelegate {
   var adUnitID: String? = "/1018855/app_news_headline_native_7/app_news_headline_native_7_IOS"
 //  var adColors: Array<String>?
   var adLayoutWithImage: Bool = true
-  var templateId: String? = "10157685"
+  var templateId: String? = "11796669"//"10157685"
   
   //MARK: Closure
   var onAdFailedToLoadClosure: ((_ view: CYTemplateAdView) -> Void)?
@@ -179,19 +180,23 @@ class CYTemplateAdView: UIView, GADNativeCustomTemplateAdLoaderDelegate {
   
   //MARK: Private Function
   private func initViews() {
-    
-    
-    
     let nibView = Bundle.main.loadNibNamed("CYTemplateAdView", owner: nil, options: nil)?.first
     guard let tempView = nibView as? TemplateAdView else {
       assert(false, "Could not load nib file for adView")
     }
     templateAdView = tempView
+    templateAdView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickedAd)))
     self.addSubview(templateAdView)
     self.backgroundColor = UIColor(hexString: "f6f6f6")
   }
   
   private func setAdView(templateAd: GADNativeCustomTemplateAd){
+    let closure: GADNativeAdCustomClickHandler = {
+      (assetID) in
+      
+    }
+    self.templateAd = templateAd
+    templateAd.customClickHandler = closure
     
     templateAdView.headline.text = templateAd.string(forKey: "Title")
     templateAdView.image.image = templateAd.image(forKey: "Cover")?.image
@@ -199,6 +204,24 @@ class CYTemplateAdView: UIView, GADNativeCustomTemplateAdLoaderDelegate {
     templateAdView.advertiserImage.image = templateAd.image(forKey: "")?.image
     
     layoutSubviews()
+  }
+  
+  @objc func clickedAd()
+  {
+    if templateAd != nil
+    {
+      templateAd.performClickOnAsset(withKey: "URL")
+      if let urlStr = templateAd.string(forKey: "URL"), let url = URL(string: urlStr) {
+        if #available(iOS 10.0, *)
+        {
+          UIApplication.shared.open(url, options: [:])
+        }
+        else
+        {
+          UIApplication.shared.openURL(url)
+        }
+      }
+    }
   }
   
   //MARK: GADNativeCustomTemplateAdLoaderDelegate
