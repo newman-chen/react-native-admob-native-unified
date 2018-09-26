@@ -189,9 +189,7 @@ class CYTemplateAdView: UIView, GADNativeCustomTemplateAdLoaderDelegate {
     }
     templateAdView = tempView
     templateAdView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickedAd)))
-    templateAdView.advertiserIcon.text = "＄"
-    templateAdView.advertiserIcon.font = UIFont.systemFont(ofSize: advertiserImageSize * 2 / 3)
-    templateAdView.advertiserIcon.textColor = UIColor.white
+    templateAdView.advertiserIcon.font = UIFont.boldSystemFont(ofSize: advertiserImageSize * 2 / 3)
     self.addSubview(templateAdView)
     self.backgroundColor = UIColor(hexString: "f6f6f6")
   }
@@ -206,8 +204,9 @@ class CYTemplateAdView: UIView, GADNativeCustomTemplateAdLoaderDelegate {
     
     templateAdView.headline.text = templateAd.string(forKey: "Title")
     templateAdView.image.image = templateAd.image(forKey: "Cover")?.image
-    templateAdView.advertiserTitle.text = String(format: "%@ %@", templateAd.string(forKey: "Sponsor") ?? "", "贊助")
+    templateAdView.advertiserTitle.text = String(format: "%@%@", templateAd.string(forKey: "Sponsor") ?? "", "贊助")
     templateAdView.advertiserImage.image = templateAd.image(forKey: "")?.image
+    
     
     layoutSubviews()
   }
